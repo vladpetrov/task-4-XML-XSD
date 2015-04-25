@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="Hangar.xsl"?>
+<han:hangar xmlns:han="http://www.epam.by/Hangar"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.epam.by/Hangar Hangar.xsd">
+	<plane model="Rus-1">
+		<origin>Russia</origin>
+		<chars>
+			<type>fighter</type>
+			<seats>1</seats>
+			<radar>true</radar>
+			<ammunition>
+				<rockets>5</rockets>
+				<machine_guns>2</machine_guns>
+			</ammunition>
+		</chars>
+		<parameters measuring="m">
+			<length>20</length>
+			<width>15</width>
+			<height>6</height>
+		</parameters>
+		<price currency="thaler">1000000</price>
+	</plane>
+
+	<plane model="US-3">
+		<origin>USA</origin>
+		<chars>
+			<type>bomber</type>
+			<seats>2</seats>
+			<radar>true</radar>
+			<ammunition>
+				<rockets>10</rockets>
+				<machine_guns>4</machine_guns>
+			</ammunition>
+		</chars>
+		<parameters measuring="m">
+			<length>30</length>
+			<width>23</width>
+			<height>8</height>
+		</parameters>
+		<price currency="thaler">1200000</price>
+	</plane>
+	<plane model="Chi-5">
+		<origin>China</origin>
+		<chars>
+			<type>UAV</type>
+			<seats>0</seats>
+			<radar>true</radar>
+		</chars>
+		<parameters measuring="m">
+			<length>10</length>
+			<width>5</width>
+			<height>3</height>
+		</parameters>
+		<price currency="thaler">500000</price>
+	</plane>
+</han:hangar>

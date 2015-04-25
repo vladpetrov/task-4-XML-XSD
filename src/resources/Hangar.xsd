@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.epam.by/Hangar"
+	xmlns="http://www.epam.by/Hangar">
+	<xs:element name="hangar">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="plane" type="Plane" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Plane">
+		<xs:sequence>
+			<xs:element name="origin" type="Origin"/>
+			<xs:element name="chars" type="Chars"/>
+			<xs:element name="parameters" type="Parameters"/>
+			<xs:element name="price" type="Price"/>
+		</xs:sequence>
+		<xs:attribute name="model" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="Origin">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z].*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Chars">
+		<xs:sequence>
+			<xs:element name="type" type="Type"/>
+			<xs:element name="seats">
+				<xs:simpleType>
+    				<xs:restriction base="xs:integer">
+      					<xs:minInclusive value="0"/>
+      					<xs:maxInclusive value="8"/>
+    				</xs:restriction>
+  				</xs:simpleType>
+			</xs:element>
+			<xs:element name="radar" type="xs:boolean"/>
+			<xs:element name="ammunition" type="Ammunition" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="fighter"/>
+			<xs:enumeration value="bomber"/>
+			<xs:enumeration value="UAV"/>
+			<xs:enumeration value="transporter"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Ammunition">
+		<xs:sequence>
+			<xs:element name="rockets" type="xs:integer"/>
+			<xs:element name="machine_guns" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Parameters">
+		<xs:sequence>
+			<xs:element name="length" type="xs:integer"/>
+			<xs:element name="width" type="xs:integer"/>
+			<xs:element name="height" type="xs:integer"/>
+		</xs:sequence>
+		<xs:attribute name="measuring" type="Measuring" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="Measuring">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="m"/>
+			<xs:enumeration value="ft"/>
+			<xs:enumeration value="inc"/>
+			<xs:enumeration value="cm"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Price">
+		<xs:simpleContent>
+			<xs:extension base="xs:integer">
+				<xs:attribute name="currency" use="optional" type="xs:string" fixed="thaler"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>
